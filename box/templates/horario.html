@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    {% load static %}	
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>horarios</title>
+</head>
+<body class="container mw-100"> 
+    <div class="p-3 mb-2 bg-secondary text-white"  id="fondo">
+    <header class="header is-stuck">
+        <div class="d-flex justify-content-center">
+            <a href="/register"><img src="{%static 'img/banner_final2.png'%}" alt="banner"></a>
+        </div>
+        <nav class="navbar navbar-dark bg-dark mt-5">
+            <div class="container">
+                <a href="/" class="navbar-brand">HOME</a>
+                <a href="/horarios/0" class="navbar-brand">HORARIO</a>
+                <a href="/planes" class="navbar-brand">PLANES</a>
+                <a href="/store" class="navbar-brand">STORE</a>
+                <a href="/compras" class="navbar-brand"><img src = "{%static 'img/carro.png'%}" alt="compras" id="carrito"></a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="row justify-content-center m-3">
+            <img src="{%static 'img/horarios_lautaro.jpg'%}" alt="Horarios" class="col-lg-10 ">
+        </div>
+        <div class="m-5">
+            <h6>Para tomar horarios debes iniciar sesion :</h6>
+            {% if request.session.id %}
+            <h5>Bienvenido {{request.session.nombre}}</h5>
+            <form action="/logout" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="Log Out" class="btn btn-secondary btn-sm">
+            </form>
+            {% else %}
+            <form action="/login" method="POST" class="d-inline-block ">
+                {% csrf_token %}
+                <p class="d-inline-block">Email: <input type="email" name="login_email"></p>
+                <p class="d-inline-block">Password: <input type="password" name="login_password"></p>
+                <input type="submit" value="Log In" class="btn btn-secondary btn-sm">
+            </form>
+            {%endif%}
+        </div>
+        <div>
+            <nav class="navbar navbar-expand-sm navbar-dark bg-dark mt-5">
+                <div class="container-fluid">
+                    <a href="/horarios/0" class="btn btn-secondary">Lunes </a>
+                    <a href="/horarios/1" class="btn btn-secondary">Martes </a>
+                    <a href="/horarios/2" class="btn btn-secondary">Miercoles </a>
+                    <a href="/horarios/3" class="btn btn-secondary">Jueves </a>
+                    <a href="/horarios/4" class="btn btn-secondary">Viernes </a>
+                    <a href="/horarios/5" class="btn btn-secondary">Sabado </a>
+                </div>
+            </nav>
+            <h4>{{dia.dia_clase}}</h4>
+                <table class="table text-white">
+                    <tr>
+                        <th>Clase</th>
+                        <th>Horario</th>
+                        <th>Tomar hora</th>
+                    </tr>
+                    {% for clase in clases %}
+                    <tr>
+                        <th>{{clase.info.nombre_clase}}</th>
+                        <th>{{clase.hora_comienzo}} - {{clase.hora_termino}}</th>
+                        <th><form action="/tomar_clases" method="POST">{% csrf_token %}<input type="submit" value="tomar hora" name="tomar_hora"><input type="hidden" name="clase_id" value="{{clase.id}}"><input type="hidden" name="dia_id" value="{{dia}}"></form></th>
+                    </tr>
+                    {%endfor%}
+                </table>
+                
+        </div>
+    </main>
+    <footer class="d-flex justify-content-center">
+        <div id="social" >
+            <a href="https://www.facebook.com/LautaroTrainingbox/"><img src = "{%static 'img/Recurso_2.png'%}" alt=facebook></a>
+            <a href="https://www.instagram.com/lautaroboxcf/"><img src = "{%static 'img/Recurso_3.png'%}" alt="instagram"></a>
+            <a href="mailto:Lautaroboxcf@Gmail.com"><img src = "{%static 'img/Recurso_4.png'%}" alt="instagram"></a>
+        </div>
+    </footer>
+    <div class="d-flex justify-content-center" >
+        <p>Avenida las rejas #1186 , Miraflores , Viña del mar</p>
+    </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}	
+    <link rel="stylesheet" href="{% static 'css/store.css' %}">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+     
+    <title>Store</title>
+</head>
+<body class="container mw-100">
+    <div class="p-3 mb-2 bg-secondary text-white" style="background: url(static/img/fondo_lautaro.jpg)   no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+        <header class="header is-stuck">
+            <div class="d-flex justify-content-center">
+                <a href="/register"><img src="{%static 'img/banner_final.png'%}" alt="banner"></a>
+            </div>
+            <nav class="navbar navbar-dark bg-dark mt-5 mb-5">
+                <div class="container">
+                    <a href="/" class="navbar-brand">HOME</a>
+                    <a href="/horarios/0" class="navbar-brand">HORARIOS</a>
+                    <a href="/planes" class="navbar-brand">PLANES</a>
+                    <a href="/store" class="navbar-brand">STORE</a>
+                    <a href="/compras" class="navbar-brand"><img src = "{%static 'img/carro.png'%}" alt="compras" id="carrito"></a>
+                </div>
+            </nav>
+        </header>
+    <main class="mt-5">
+        <div class="row row-cols-1 row-cols-md-4 mb-3 text-center mt-5">
+            <div class="col">
+                <div class="card mb-4 rounded-4 shadow-sm border-dark">
+                    <div class="card-header py-3 text-white bg-dark border-dark">
+                        <h4 class="my-0 fw-normal">8 clases</h4>
+                    </div>
+                    <div class="text-black-50">
+                        <img src="{%static 'img/logo_lautaro.png'%}" alt="logo lautaro" id="img">
+                        <form action="/store" method="POST">
+                        {% csrf_token %}
+                            <button type="submit" value="8" name="mensualidad" class="w-100 btn btn-lg btn-dark">Subscribir</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-4 rounded-4 shadow-sm border-dark">
+                    <div class="card-header py-3 text-white bg-dark border-dark">
+                        <h4 class="my-0 fw-normal">12 clases</h4>
+                    </div>
+                    <div class="text-black-50">
+                        <img src="{%static 'img/logo_lautaro.png'%}" alt="logo lautaro" id="img">
+                        <form action="/store" method="POST">
+                        {% csrf_token %}
+                            <button type="submit" value="12" name="mensualidad" class="w-100 btn btn-lg btn-dark">Subscribir</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-4 rounded-4 shadow-sm border-dark">
+                    <div class="card-header py-3 text-white bg-dark border-dark">
+                        <h4 class="my-0 fw-normal">16 clases</h4>
+                    </div>
+                    <div class="text-black-50">
+                        <img src="{%static 'img/logo_lautaro.png'%}" alt="logo lautaro" id="img">
+                        <form action="/store" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" value="16" name="mensualidad" class="w-100 btn btn-lg btn-dark">Subscribir</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-4 rounded-4 shadow-sm border-dark">
+                    <div class="card-header py-3 text-white bg-dark border-dark">
+                        <h4 class="my-0 fw-normal">Full</h4>
+                    </div>
+                    <div class="text-black-50">
+                        <img src="{%static 'img/logo_lautaro.png'%}" alt="logo lautaro" id="img">
+                        <form action="/store" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" value="full" name="mensualidad" class="w-100 btn btn-lg btn-dark">Subscribir</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+          </div>
+    </main>
+    <footer class="d-flex justify-content-center">
+        <div id="social" >
+            <a href="https://www.facebook.com/LautaroTrainingbox/"><img src = "{%static 'img/Recurso_2.png'%}" alt=facebook></a>
+            <a href="https://www.instagram.com/lautaroboxcf/"><img src = "{%static 'img/Recurso_3.png'%}" alt="instagram"></a>
+            <a href="mailto:Lautaroboxcf@Gmail.com"><img src = "{%static 'img/Recurso_4.png'%}" alt="instagram"></a>
+        </div>
+    </footer>
+    <div class="d-flex justify-content-center" >
+        <p>Avenida las rejas #1186 , Miraflores , Viña del mar</p>
+    </div>
+    </div>
+</body>
+</html>

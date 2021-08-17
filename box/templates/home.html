@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    {% load static %}	
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+    <title>Lautaro</title>
+</head>
+<body class="container mw-100">
+    <div class="p-3 mb-2 bg-secondary text-white" style="background: url(static/img/fondo_lautaro.jpg)   no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+        <header class="header is-stuck">
+            <div class="d-flex justify-content-center">
+                <a href="/register"><img src="{%static 'img/banner_final.png'%}" alt="banner"></a>
+            </div>
+            <nav class="navbar navbar-dark bg-dark mt-5">
+                <div class="container">
+                    <a href="/" class="navbar-brand">HOME</a>
+                    <a href="/horarios/0" class="navbar-brand">HORARIO</a>
+                    <a href="/planes" class="navbar-brand">PLANES</a>
+                    <a href="/store" class="navbar-brand">STORE</a>
+                    <a href="/compras" class="navbar-brand"><img src = "{%static 'img/carro.png'%}" alt="compras" id="carrito"></a>
+                </div>
+            </nav>
+        </header>
+        <main class="row">
+            <div class="col-10 d-inline-block">
+                <h3 class="col-4 ">el box </h3>
+                <h5 class="col-4 ">Ven a conocernos </h5>
+                <img src= "{%static 'img/gente_lautaro.jpg'%}" alt="gente lautaro" id="gente_lautaro" class="col-1 d-inline-block">
+                <h5 class="col-7 d-inline-block" id="staff"> Gimnasio de entrenamiento funcional / cross training donde buscamos mejorar tus capacidades de flexibilidad, resistencia, fuerza, precision, capacidad aerobica,
+                    anaerobica entre otras. Entrenamientos dirigidos por coaches capacitados.Duracion de las clases es de 1 hora, rutinas que varian dia a dia , con ejercicios de levantamientos de pesas , cardio y gimnastico para encontrar tu merjo version. </h5>
+                <a href=""></a>
+            </div>
+            <div class="col-2 d-inline">  
+                {% if request.session.id %}
+            <h5>Bienvenido {{request.session.nombre}}</h5>
+            <form action="/logout" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="Log Out" class="btn btn-secondary btn-sm">
+            </form>
+            {% else %}
+            <h6>login</h6>
+            <form action="/login" method="POST" class="d-inline-block ">
+                {% csrf_token %}
+                <p class="d-inline-block">Email: <input type="email" name="login_email"></p>
+                <p class="d-inline-block">Password: <input type="password" name="login_password"></p>
+                <input type="submit" value="Log In" class="btn btn-secondary btn-sm">
+            </form>
+            {%endif%}
+            </div>
+            <div class="m-5 ">
+                <h3 class="col-4 ">Staff </h3>
+                <h5>Cristobal Leyton</h5>
+                <img src="{%static 'img/leyton.jpg'%}" alt="cristobal leyton" id="gente_lautaro">
+                <h5 class="col-7 d-inline-block" id="staff"> Profesor de educacion fisica de la universidad de la playa ancha, Nivel 1 y Nivel 2 de levantamiento olimpico curso impartido por federacion chilena de pesas
+                    compatidor de crossfit desde 2016 y desde 2019 a nivel ELITE
+                </h5>
+
+            </div>
+        </main>
+        <footer class="d-flex justify-content-center">
+            <div id="social" >
+                <a href="https://www.facebook.com/LautaroTrainingbox/"><img src = "{%static 'img/Recurso_2.png'%}" alt=facebook></a>
+                <a href="https://www.instagram.com/lautaroboxcf/"><img src = "{%static 'img/Recurso_3.png'%}" alt="instagram"></a>
+                <a href="mailto:Lautaroboxcf@Gmail.com"><img src = "{%static 'img/Recurso_4.png'%}" alt="instagram"></a>
+            </div>
+        </footer>
+        <div class="d-flex justify-content-center" >
+            <p>Avenida las rejas #1186 , Miraflores , Viña del mar</p>
+        </div>
+    </div>
+</body>
+</html>

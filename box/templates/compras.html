@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    {% load static %}	
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Carrito</title>
+</head>
+<body class="container mw-100"> 
+    <div class="p-3 mb-2 bg-secondary text-white" style="background: url(static/img/fondo_lautaro.jpg)   no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+        <header class="header is-stuck">
+            <div class="d-flex justify-content-center">
+                <a href="/register"><img src="{%static 'img/banner_final.png'%}" alt="banner"></a>
+            </div>
+            <nav class="navbar navbar-dark bg-dark mt-5">
+                <div class="container">
+                    <a href="/" class="navbar-brand">HOME</a>
+                    <a href="/horarios/0" class="navbar-brand">HORARIO</a>
+                    <a href="/planes" class="navbar-brand">PLANES</a>
+                    <a href="/store" class="navbar-brand">STORE</a>
+                    <a href="/compras" class="navbar-brand"><img src = "{%static 'img/carro.png'%}" alt="compras" id="carrito"></a>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <table class="table text-white">
+                <tr>
+                    <th>COMPRA</th>
+                    <th>CANTIDAD</th>
+                    <th>ELIMINAR ARTICULO</th>
+                </tr>
+                {% for shop in shoping %}
+                <tr>  
+                    <td>{{shop.mensualidad}}</td>
+                    <td>1</td> 
+                    <td><a href="delete/{{shop.id}}" class="btn btn-secondary">Delete</a></td>            
+                </tr>
+                {%endfor%}
+            </table>
+            <button type="button" class="btn btn-secondary ms-lg-5 ">Pagar</button>
+        </main>
+        <footer class="d-flex justify-content-center">
+            <div id="social" >
+                <a href="https://www.facebook.com/LautaroTrainingbox/"><img src = "{%static 'img/Recurso_2.png'%}" alt=facebook></a>
+                <a href="https://www.instagram.com/lautaroboxcf/"><img src = "{%static 'img/Recurso_3.png'%}" alt="instagram"></a>
+                <a href="mailto:Lautaroboxcf@Gmail.com"><img src = "{%static 'img/Recurso_4.png'%}" alt="instagram"></a>
+            </div>
+        </footer>
+        <div class="d-flex justify-content-center" >
+            <p>Avenida las rejas #1186 , Miraflores , Viña del mar</p>
+        </div>
+    </div>
+</body>
+</html>

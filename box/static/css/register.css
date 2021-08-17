@@ -1,0 +1,14 @@
+
+body{
+    text-align: center;
+}
+
+header img{
+    height: 300px;
+    width: 300px;
+    margin: 25px;
+}
+
+label{
+    width: 150px;
+}

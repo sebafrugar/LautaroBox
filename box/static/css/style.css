@@ -1,0 +1,54 @@
+
+
+.container{
+    max-width: 100%;
+}
+    
+header{
+    margin-bottom: 150px;
+}
+
+#fondo{
+    background-image: url("../img/fondo_lautaro.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+footer img{
+    margin: 25px ;
+    width: 40px;
+    height: 40px;
+}
+
+#gente_lautaro{
+    width: 270px;
+    height: 190px;
+}
+
+.staff{
+    width: 570px;
+}
+
+.mision{
+    display: inline-block;
+    text-align: center;
+}
+
+footer div{
+    align-content: center;
+}
+
+#parrafo{
+    width: 50px;
+}
+
+#horario{
+    width: 652.578;
+    height: 1100px;
+}
+
+#carrito{
+    width: 43px;
+    height: 40px;
+}
